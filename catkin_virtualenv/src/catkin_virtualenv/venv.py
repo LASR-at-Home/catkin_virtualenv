@@ -100,6 +100,7 @@ class Virtualenv:
             version = version.strip()
             # download pip from https://bootstrap.pypa.io/pip/
             get_pip_url = "https://bootstrap.pypa.io/pip/3.8/get-pip.py" if version == "3.8" else "https://bootstrap.pypa.io/pip/get-pip.py"
+            print(version, type(version), get_pip_url)
             get_pip_path, _ = urlretrieve(get_pip_url)
             run_command([self._venv_bin("python"), get_pip_path], check=True)
 
