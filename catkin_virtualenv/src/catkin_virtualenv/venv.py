@@ -99,7 +99,8 @@ class Virtualenv:
                 version = version.decode("utf-8")
             version = version.strip()
             # download pip from https://bootstrap.pypa.io/pip/
-            get_pip_path, _ = urlretrieve("https://bootstrap.pypa.io/pip/get-pip.py")
+            get_pip_url = "https://bootstrap.pypa.io/pip/3.8/get-pip.py" if version == "3.8" else "https://bootstrap.pypa.io/pip/get-pip.py"
+            get_pip_path, _ = urlretrieve(get_pip_url)
             run_command([self._venv_bin("python"), get_pip_path], check=True)
 
         # (gservin): test --no-cache-dir
